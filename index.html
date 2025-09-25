@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Foot Rater - Discover Your Foot Score!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">🦶 AI Foot Rater</h1>
+            <p class="app-subtitle">Discover what AI thinks about your feet!</p>
+        </header>
+
+        <!-- Main Application -->
+        <main class="main-app">
+            <!-- Personality Selection -->
+            <section class="personality-section">
+                <h2 class="section-title">Choose Your AI Critic</h2>
+                <div class="personality-grid">
+                    <button class="personality-btn active" data-personality="witty">
+                        <span class="personality-icon">✨</span>
+                        <div class="personality-info">
+                            <h3>Witty</h3>
+                            <p>World-renowned podiatry aesthetician</p>
+                        </div>
+                    </button>
+                    <button class="personality-btn" data-personality="sarcastic">
+                        <span class="personality-icon">🎭</span>
+                        <div class="personality-info">
+                            <h3>Sarcastic</h3>
+                            <p>Unimpressed art critic</p>
+                        </div>
+                    </button>
+                    <button class="personality-btn" data-personality="roast">
+                        <span class="personality-icon">🔥</span>
+                        <div class="personality-info">
+                            <h3>Roast</h3>
+                            <p>Ruthless comedy roaster</p>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📸</div>
+                        <h3>Drop your foot photo here</h3>
+                        <p>Or click to browse files</p>
+                        <p class="upload-hint">Supports JPG, PNG, WEBP</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden>
+                </div>
+            </section>
+
+            <!-- Loading Section -->
+            <section class="loading-section hidden" id="loadingSection">
+                <div class="loading-spinner"></div>
+                <p class="loading-message" id="loadingMessage">Analyzing your foot...</p>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section hidden" id="resultsSection">
+                <div class="results-card">
+                    <div class="score-section">
+                        <div class="score-gauge-container">
+                            <canvas id="scoreGauge" width="200" height="200"></canvas>
+                            <div class="score-display">
+                                <span class="score-number" id="scoreNumber">0</span>
+                                <span class="score-max">/10</span>
+                            </div>
+                        </div>
+                        <div class="score-description" id="scoreDescription"></div>
+                    </div>
+                    
+                    <div class="critique-section">
+                        <h3>Overall Critique</h3>
+                        <p class="overall-critique" id="overallCritique"></p>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h3>Deep Dive Analysis</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-item">
+                                <div class="analysis-icon">🏛️</div>
+                                <h4>Arch Analysis</h4>
+                                <p id="archAnalysis"></p>
+                            </div>
+                            <div class="analysis-item">
+                                <div class="analysis-icon">👣</div>
+                                <h4>Toe Alignment</h4>
+                                <p id="toeAlignment"></p>
+                            </div>
+                            <div class="analysis-item">
+                                <div class="analysis-icon">✨</div>
+                                <h4>Skin Condition</h4>
+                                <p id="skinCondition"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn--primary" id="shareBtn">Share Result</button>
+                        <button class="btn btn--secondary" id="newRatingBtn">Rate Another Foot</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <h2 class="section-title">Your Rating History</h2>
+            <div class="history-container" id="historyContainer">
+                <div class="history-empty" id="historyEmpty">
+                    <div class="empty-icon">📝</div>
+                    <h3>No ratings yet!</h3>
+                    <p>Upload your first foot photo to start building your rating history.</p>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal hidden" id="shareModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share Your Rating</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <canvas id="shareCanvas" width="400" height="600"></canvas>
+                <div class="share-actions">
+                    <button class="btn btn--primary" id="downloadBtn">Download Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
