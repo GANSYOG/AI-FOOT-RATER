@@ -1248,6 +1248,9 @@ select.form-control {
 
 .share-actions {
   margin-top: var(--space-16);
+  display: flex;
+  gap: var(--space-12);
+  justify-content: center;
 }
 
 #shareCanvas {
