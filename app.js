@@ -212,12 +212,14 @@ class AIFootRater {
         });
         
         // Action buttons
-        document.getElementById('shareBtn').addEventListener('click', () => this.shareResult());
+        document.getElementById('openShareModalBtn').addEventListener('click', () => this.shareResult());
         document.getElementById('newRatingBtn').addEventListener('click', () => this.resetApp());
         
         // Modal
         document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
         document.getElementById('downloadBtn').addEventListener('click', () => this.downloadShare());
+        document.getElementById('shareBtn').addEventListener('click', () => this.shareImage());
+        document.getElementById('copyBtn').addEventListener('click', () => this.copyImage());
         
         // Modal overlay click to close
         document.querySelector('.modal-overlay').addEventListener('click', () => this.closeModal());
@@ -550,6 +552,47 @@ class AIFootRater {
         link.download = `foot-rating-${this.currentResult.score}.png`;
         link.href = canvas.toDataURL();
         link.click();
+    }
+
+    async shareImage() {
+        const canvas = document.getElementById('shareCanvas');
+        if (navigator.share) {
+            canvas.toBlob(async (blob) => {
+                const file = new File([blob], `foot-rating-${this.currentResult.score}.png`, { type: 'image/png' });
+                try {
+                    await navigator.share({
+                        files: [file],
+                        title: 'My AI Foot Rating!',
+                        text: `I got a ${this.currentResult.score}/10 on the AI Foot Rater!`,
+                    });
+                } catch (error) {
+                    console.error('Error sharing:', error);
+                }
+            }, 'image/png');
+        } else {
+            alert('Web Share API is not supported in your browser.');
+        }
+    }
+
+    copyImage() {
+        const canvas = document.getElementById('shareCanvas');
+        const copyBtn = document.getElementById('copyBtn');
+        canvas.toBlob((blob) => {
+            try {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        'image/png': blob
+                    })
+                ]);
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Image';
+                }, 2000);
+            } catch (error) {
+                console.error('Error copying image:', error);
+                alert('Failed to copy image.');
+            }
+        }, 'image/png');
     }
     
     closeModal() {
