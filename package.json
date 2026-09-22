@@ -1,0 +1,25 @@
+{
+  "name": "ai-foot-rater",
+  "version": "1.0.0",
+  "description": "scan your foot",
+  "main": "app.js",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GANSYOG/AI-FOOT-RATER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GANSYOG/AI-FOOT-RATER/issues"
+  },
+  "homepage": "https://github.com/GANSYOG/AI-FOOT-RATER#readme",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
