@@ -8,9 +8,9 @@ class AIFootRater {
 
         // Data from the application data JSON
         this.personalities = {
-            witty: { name: "Witty", description: "World-renowned podiatry aesthetician", icon: "✨", color: "#6366f1" },
-            sarcastic: { name: "Sarcastic", description: "Unimpressed art critic", icon: "🎭", color: "#f59e0b" },
-            roast: { name: "Roast", description: "Ruthless comedy roaster", icon: "🔥", color: "#ef4444" }
+            witty: { name: "Witty", description: "World-renowned podiatry aesthetician", icon: "✨", color: "#33CCFF" },
+            sarcastic: { name: "Sarcastic", description: "Unimpressed art critic", icon: "🎭", color: "#9933FF" },
+            roast: { name: "Roast", description: "Ruthless comedy roaster", icon: "🔥", color: "#FF3366" }
         };
 
         this.loadingMessages = [

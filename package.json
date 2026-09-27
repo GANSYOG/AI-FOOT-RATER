@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/GANSYOG/AI-FOOT-RATER#readme",
   "devDependencies": {
-    "serve": "^14.2.1"
+    "playwright": "^1.63.0",
+    "serve": "^14.2.6"
   }
 }
